@@ -17,7 +17,7 @@ const setting = {
   //开发环境端口号
   devPort: "8091",
   //copyright
-  copyright: "zxwk1998",
+  copyright: "Admin Project",
   //是否显示页面底部自定义版权信息
   footerCopyright: true,
   //是否显示顶部进度条
@@ -49,7 +49,7 @@ const setting = {
   //vertical布局时是否只保持一个子菜单的展开
   uniqueOpened: false,
   //vertical布局时默认展开的菜单path，使用逗号隔开建议只展开一个
-  defaultOopeneds: ["/vab"],
+  defaultOopeneds: [],
   //需要加loading层的请求，防止重复提交
   debounce: ["doEdit"],
   //需要自动注入并加载的模块
@@ -57,6 +57,6 @@ const setting = {
   //代码生成机生成在view下的文件夹名称
   templateFolder: "project",
   //是否显示终端donation打印
-  donation: true,
+  donation: false,
 };
 module.exports = setting;

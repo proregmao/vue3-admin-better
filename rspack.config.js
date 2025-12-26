@@ -19,7 +19,7 @@ process.env.BASE_URL = publicPath;
 // 删除这一行，避免覆盖rspack.js中设置的值
 // process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 process.env.VUE_APP_MOCK_ENABLE = "true"; // 始终启用mock
-process.env.VUE_APP_AUTHOR = "vue-admin-better"; // 设置作者
+process.env.VUE_APP_AUTHOR = "Admin Project"; // 设置作者
 
 const resolve = (dir) => path.join(__dirname, dir);
 // 定义一个模式变量，避免冲突
@@ -167,6 +167,7 @@ module.exports = {
       "process.env.VUE_APP_UPDATE_TIME": JSON.stringify(
         process.env.VUE_APP_UPDATE_TIME
       ),
+      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(false),
     }),
     new HtmlRspackPlugin({
       template: "./public/index.html",
@@ -181,12 +182,12 @@ module.exports = {
       minify:
         mode === "production"
           ? {
-              removeComments: true,
-              collapseWhitespace: true,
-              removeAttributeQuotes: true,
-              collapseBooleanAttributes: true,
-              removeScriptTypeAttributes: true,
-            }
+            removeComments: true,
+            collapseWhitespace: true,
+            removeAttributeQuotes: true,
+            collapseBooleanAttributes: true,
+            removeScriptTypeAttributes: true,
+          }
           : false,
     }),
   ],
@@ -258,6 +259,16 @@ module.exports = {
       overlay: {
         errors: true,
         warnings: false,
+        runtimeErrors: (error) => {
+          const ignoreErrors = [
+            "ResizeObserver loop completed with undelivered notifications.",
+            "ResizeObserver loop limit exceeded",
+          ];
+          if (ignoreErrors.includes(error.message)) {
+            return false;
+          }
+          return true;
+        },
       },
     },
     open: {

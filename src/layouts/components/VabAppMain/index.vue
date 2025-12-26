@@ -1,15 +1,14 @@
 <template>
   <div v-if="routerView" class="app-main-container">
-    <vab-github-corner />
-    <transition mode="out-in" name="fade-transform">
-      <keep-alive :include="cachedRoutes" :max="keepAliveMaxNum">
-        <router-view :key="key" class="app-main-height" />
-      </keep-alive>
-    </transition>
+    <router-view v-slot="{ Component }">
+      <transition mode="out-in" name="fade-transform">
+        <keep-alive :include="cachedRoutes" :max="keepAliveMaxNum">
+          <component :is="Component" :key="key" class="app-main-height" />
+        </keep-alive>
+      </transition>
+    </router-view>
     <footer v-show="footerCopyright" class="footer-copyright">
-      Copyright
-      <el-icon><CopyDocument /></el-icon>
-      vue3-admin-better 开源免费版 {{ fullYear }}
+      {{ copyrightText }}
     </footer>
   </div>
 </template>
@@ -34,6 +33,7 @@ export default {
       keepAliveMaxNum,
       routerView: true,
       footerCopyright,
+      copyrightText: localStorage.getItem("vab-copyright") || "Copyright vue3-admin-better 开源免费版 2025",
     };
   },
   computed: {
@@ -65,10 +65,12 @@ export default {
   created() {
     // 监听事件总线中的reload-router-view事件
     eventBus.on("reload-router-view", this.reloadRouterView);
+    eventBus.on("update-copyright", this.updateCopyright);
   },
   beforeUnmount() {
     // 组件销毁前移除事件监听
     eventBus.off("reload-router-view", this.reloadRouterView);
+    eventBus.off("update-copyright", this.updateCopyright);
   },
   mounted() {},
   methods: {
@@ -81,6 +83,9 @@ export default {
       this.$nextTick(() => {
         this.routerView = true;
       });
+    },
+    updateCopyright(text) {
+      this.copyrightText = text;
     },
   },
 };

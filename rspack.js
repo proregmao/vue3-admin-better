@@ -7,10 +7,7 @@ const { rspack } = require("@rspack/core");
 const path = require("path");
 const fs = require("fs");
 // 引入layouts中的donationConsole函数
-const { donationConsole } = require("./layouts");
-
 // 在命令行控制台打印信息
-donationConsole();
 
 const configPath = path.resolve(__dirname, "rspack.config.js");
 const config = require(configPath);

@@ -22,33 +22,9 @@
 - 🚀 Cross platform PC, mobile terminal and tablet
 - 📦 Back end route dynamic rendering
 
-## 🌐 Address
 
-- [🎉 Vue2. X + element UI (free commercial, PC, tablet and mobile phone supported)](https://vuejs-core.cn/vue-admin-better/)
 
-<!-- - [⚡️ Vue3. X + element plus (alpha version, free commercial, supporting PC, tablet and mobile phone)](https://vuejs-core.cn/vue-admin-better-plus/) -->
 
-<!-- - [⚡️ Vue3. X + ant design Vue (beta version, free commercial, supporting PC, tablet and mobile phone)](https://vuejs-core.cn/vue-admin-better-antdv/) -->
-
-- [⚡️ vue3.x + vite + vue-admin-arco](https://vuejs-core.cn/vue-admin-arco/)
-
-- [🚀 Admin Pro demo address (vue2.x paid version, supporting PC, tablet and mobile phone)](https://vuejs-core.cn/admin-pro/)
-
-- [🚀 Admin plus demo address (vue3.x paid version, supporting PC, tablet and mobile phone)](https://vuejs-core.cn/admin-plus/)
-
-- [📌 Pro and plus purchase address authorization](https://vuejs-core.cn/authorization/)
-
-- [🌐 Github Warehouse address](https://github.com/zxwk1998/vue-admin-better/)
-
-- [🌐 Gitee Warehouse address](https://gitee.com/chu1204505056/vue-admin-better/)
-
-- Recently, the VAB official website has been frequently attacked by DDoS. We have taken relevant preventive measures.
-  If the website cannot be accessed, please visit the backup address
-
-## 📦️ Desktop applications
-
-- [Admin Pro](https://gitee.com/chu1204505056/microsoft-store/raw/master/AdminPlus.zip)
-- [Admin Plus](https://gitee.com/chu1204505056/microsoft-store/raw/master/AdminPlus.zip)
 
 <!-- ## 🌱 Vue3.x vue3.0-antdv [Click switch branch](https://github.com/zxwk1998/vue-admin-better/tree/vue3.0-antdv)
 
@@ -58,50 +34,11 @@ npm i --registry=http://mirrors.cloud.tencent.com/npm/
 npm run serve
 ``` -->
 
-## 🌱 Vue2.xmain [Click switch branch](https://github.com/zxwk1998/vue-admin-better/tree/master)
 
-```bash
-git clone -b master https://github.com/zxwk1998/vue-admin-better.git
-npm i --registry=http://mirrors.cloud.tencent.com/npm/
-npm run serve
-```
 
-## 🍻 Front end discussion QQ group
 
-- Let's have a cup of coffee, and then contact QQ 783963206 to invite you to the discussion group. Because of the large
-  number of users, if you haven't passed a friend's request, please contact Alipay on the Alipay payment page, whether
-  you invite or not, you can enjoy the open source code, thank you for your support and trust, and provide the
-  vue-admin-better basic version in the group. Automatic configuration tutorial of development tools and project
-  development documents.
 
-<table>
-<tr>
-<!-- <td>
-<img width="200px" src="https://gcore.jsdelivr.net/gh/zxwk1998/image/qq_group/hbm.jpg">
-</td> -->
-<td>
-<img width="200px" src="https://gcore.jsdelivr.net/gh/zxwk1998/image/zfb_kf.jpg">
-</td>
-<td>
-<img width="200px" src="https://gcore.jsdelivr.net/gh/zxwk1998/image/qq_group/vab-2.jpg">
-</td>
-<td>
-<img width="200px" src="https://gcore.jsdelivr.net/gh/zxwk1998/image/qq_group/vab-3.jpg">
-</td>
-</tr>
-</table>
 
-## 🙈 We promise to sponsor open source projects regularly (thank giant)
-
-<a title="vue" href="https://opencollective.com/vuejs" target="_blank">
-<img width="64px" src="https://gcore.jsdelivr.net/gh/zxwk1998/image/vue.png"/>
-</a>
-<a title="element-plus" href="https://opencollective.com/element-plus" target="_blank">
-<img width="64px" src="https://gcore.jsdelivr.net/gh/zxwk1998/image/element-plus.png"/>
-</a>
-<a title="ant-design-vue" href="https://opencollective.com/ant-design-vue" target="_blank">
-<img width="64px" src="https://images.opencollective.com/ant-design-vue/2ec179b/logo/256.png"/>
-</a>
 
 ## 🎨 Acknowledge
 
@@ -162,41 +99,9 @@ Precautions for use:
 
 ![img](https://gcore.jsdelivr.net/gh/zxwk1998/image/vip/flow.drawio.png)
 
-## 🗃️ design sketch
 
-The following is a screenshot of the pro version:
 
-<table>
-<tr>
-<td>
-<img src="https://gcore.jsdelivr.net/gh/zxwk1998/image/2.png">
-</td>
-<td>
-<img src="https://gcore.jsdelivr.net/gh/zxwk1998/image/6.png">
-</td>
-</tr>
-<tr>
-<td>
-<img src="https://gcore.jsdelivr.net/gh/zxwk1998/image/8.png">
-</td>
-<td>
-<img src="https://gcore.jsdelivr.net/gh/zxwk1998/image/9.png">
-</td>
-</tr>
-<tr>
-<td>
-<img src="https://gcore.jsdelivr.net/gh/zxwk1998/image/3.png">
-</td>
-<td>
-<img src="https://gcore.jsdelivr.net/gh/zxwk1998/image/5.png">
-</td>
-</tr>
-</table>
 
-## 📄 Commercial considerations
-
-This project can be used for commercial purposes free of charge. Please abide by the MIT agreement and keep the author's
-technical support statement. For customized source code copyright information, please contact customer service QQ 783963206.
 
 <!-- ## 严正声明
 

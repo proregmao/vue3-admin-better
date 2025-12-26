@@ -1,63 +1,7 @@
 <template>
   <div class="index-container">
+
     <el-row :gutter="20">
-      <el-col :lg="24" :md="24" :sm="24" :xl="24" :xs="24">
-        <el-alert v-if="noticeList">
-          <div
-            style="display: flex; align-items: center; justify-content: center"
-          >
-            <a
-              href="https://github.com/zxwk1998/vue-admin-better"
-              target="_blank"
-            >
-              <img
-                src="https://img.shields.io/github/stars/zxwk1998/vue-admin-better?style=flat-square&label=Stars&logo=github"
-                style="margin-right: 10px"
-              />
-            </a>
-            <p v-html="noticeList.notice"></p>
-          </div>
-        </el-alert>
-      </el-col>
-      <el-col
-        v-for="(item, index) in iconList"
-        :key="index"
-        :lg="6"
-        :md="6"
-        :sm="6"
-        :xl="3"
-        :xs="12"
-      >
-        <el-card class="icon-card" shadow="never">
-          <div class="icon-container" @click="handleIconClick(item)">
-            <div class="icon-header">
-              <div class="icon-wrapper" :style="{ background: item.color }">
-                <el-icon>
-                  <component :is="getIconComponent(item.icon)" />
-                </el-icon>
-              </div>
-              <div class="icon-title">{{ item.title }}</div>
-            </div>
-            <div class="icon-content">
-              <div class="icon-description">
-                {{ getIconDescription(item.title) }}
-              </div>
-            </div>
-            <div class="icon-footer">
-              <div class="icon-stats">
-                <div class="stat-item">
-                  <el-icon><View /></el-icon>
-                  <span>{{ getRandomViews() }}</span>
-                </div>
-                <div class="stat-item">
-                  <el-icon><Heart /></el-icon>
-                  <span>{{ getRandomLikes() }}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </el-card>
-      </el-col>
       <el-col :lg="6" :md="12" :sm="24" :xl="6" :xs="24">
         <el-card shadow="never">
           <template #header>
@@ -186,7 +130,7 @@
             <div class="chart-footer">
               <div class="trend-info">
                 <div class="trend-item">
-                  <el-icon class="trend-up"><CheckCircle /></el-icon>
+                  <el-icon class="trend-up"><CircleCheck /></el-icon>
                   <span class="trend-text">运行正常</span>
                 </div>
                 <div class="trend-item">
@@ -300,7 +244,6 @@
 <script>
 import VabChart from "@/plugins/echarts";
 import { dependencies, devDependencies } from "../../../package.json";
-import { getNoticeList } from "@/api/notice";
 import { random } from "lodash-es";
 import {
   View,
@@ -317,6 +260,7 @@ import {
   More,
   Promotion,
   Picture,
+  CircleCheck,
 } from "@element-plus/icons-vue";
 
 export default {
@@ -337,6 +281,7 @@ export default {
     More,
     Promotion,
     Picture,
+    CircleCheck,
   },
   data() {
     return {
@@ -783,7 +728,6 @@ export default {
     };
   },
   created() {
-    this.fetchData();
     const now = new Date();
     const oneDay = 3600 * 1000 * 24;
     const date = [];
@@ -864,32 +808,6 @@ export default {
       // this.$baseEventBus.$emit('theme')
       // 直接打开主题设置
       this.drawerVisible = true;
-    },
-    async fetchData() {
-      try {
-        const res = await getNoticeList();
-        this.noticeList = res.data;
-      } catch (error) {
-        console.error("获取通知列表失败:", error);
-      }
-    },
-    handleIconClick(item) {
-      if (item.link) {
-        window.open(item.link, "_blank");
-      }
-    },
-    getIconDescription(title) {
-      const descriptions = {
-        视频播放器: "支持多种格式的视频播放",
-        表格: "功能强大的数据表格组件",
-        源码: "开源项目源码下载",
-        书籍: "技术文档和教程",
-        公告: "系统公告和通知",
-        礼物: "免费资源和福利",
-        公平的世界: "开源社区贡献",
-        休息一下: "放松心情，享受生活",
-      };
-      return descriptions[title] || "功能模块";
     },
     getRandomViews() {
       return `${random(100, 999)}K`;

@@ -26,44 +26,22 @@
             </el-input>
           </el-form-item>
 
-          <el-form-item prop="phone">
-            <el-input
-              v-model.trim="form.phone"
-              placeholder="请输入手机号"
-              maxlength="11"
-              show-word-limit
-              type="text"
-            >
-              <template #prefix>
-                <el-icon><Cellphone /></el-icon>
-              </template>
-            </el-input>
-          </el-form-item>
-
-          <el-form-item prop="phoneCode" class="verification-code-item">
-            <el-input
-              v-model.trim="form.phoneCode"
-              placeholder="手机验证码"
-              type="text"
-            >
-              <template #prefix>
-                <el-icon><Message /></el-icon>
-              </template>
-            </el-input>
-            <el-button
-              class="verification-code-btn"
-              :disabled="isGetphone"
-              type="primary"
-              @click="getPhoneCode"
-            >
-              {{ phoneCode }}
-            </el-button>
-          </el-form-item>
-
           <el-form-item prop="password">
             <el-input
               v-model.trim="form.password"
               placeholder="设置密码"
+              type="password"
+            >
+              <template #prefix>
+                <el-icon><Lock /></el-icon>
+              </template>
+            </el-input>
+          </el-form-item>
+
+          <el-form-item prop="confirmPassword">
+            <el-input
+              v-model.trim="form.confirmPassword"
+              placeholder="请再次输入密码"
               type="password"
             >
               <template #prefix>
@@ -81,7 +59,7 @@
             class="register-btn"
             type="primary"
             :disabled="!agreeTerms"
-            @click.native.prevent="handleReister"
+            @click.native.prevent="handleRegister"
           >
             立即注册
           </el-button>
@@ -107,10 +85,10 @@
 
 <script setup>
 import { reactive, ref, toRefs, onUnmounted } from "vue";
-import { isPassword, isPhone } from "@/utils/validate";
+import { isPassword } from "@/utils/validate";
 import { register } from "@/api/user";
 import { ElMessage } from "element-plus";
-import { User, Cellphone, Message, Lock } from "@element-plus/icons-vue";
+import { User, Lock } from "@element-plus/icons-vue";
 import { useRouter } from "vue-router";
 
 // 聚焦指令
@@ -162,60 +140,54 @@ const state = reactive({
         trigger: "blur",
       },
     ],
-    phoneCode: [
-      { required: true, trigger: "blur", message: "请输入手机验证码" },
+    confirmPassword: [
+      { required: true, trigger: "blur", message: "请再次输入密码" },
+      {
+        validator: (rule, value, callback) => {
+          if (value !== state.form.password) {
+            callback(new Error("两次输入的密码不一致"));
+          } else {
+            callback();
+          }
+        },
+        trigger: "blur",
+      },
     ],
   },
-  isGetphone: false,
-  phoneCode: "获取验证码",
-  getPhoneIntval: null,
 });
 
 const registerForm = ref(null);
 const agreeTerms = ref(false);
 const router = useRouter();
 
-// 获取手机验证码
-const getPhoneCode = () => {
-  if (!isPhone(state.form.phone)) {
-    ElMessage.error("请输入正确的手机号");
-    return;
-  }
-  state.isGetphone = true;
-  let n = 60;
-  state.getPhoneIntval = setInterval(() => {
-    if (n > 0) {
-      n--;
-      state.phoneCode = `重新获取(${n}s)`;
-    } else {
-      clearInterval(state.getPhoneIntval);
-      state.getPhoneIntval = null;
-      state.phoneCode = "获取验证码";
-      state.isGetphone = false;
-    }
-  }, 1000);
-};
-
 // 处理注册
-const handleReister = () => {
+const handleRegister = () => {
   registerForm.value?.validate(async (valid) => {
     if (valid) {
-      const param = {
-        username: state.form.username,
-        phone: state.form.phone,
-        password: state.form.password,
-        phoneCode: state.form.phoneCode,
-      };
-      try {
-        const { msg } = await register(param);
-        ElMessage.success(msg || "注册成功");
-        // 注册成功后跳转到登录页
-        setTimeout(() => {
-          router.push("/login");
-        }, 1500);
-      } catch (error) {
-        ElMessage.error(error.message || "注册失败");
+      // 模拟数据库检查 (使用 localStorage)
+      const users = JSON.parse(localStorage.getItem("vab-users") || "[]");
+      
+      // 检查用户名是否已存在
+      const isExist = users.some(u => u.username === state.form.username);
+      if (isExist) {
+        ElMessage.error("该用户名已被使用，请更换");
+        return;
       }
+
+      // 注册成功，保存用户信息
+      const newUser = {
+        username: state.form.username,
+        password: state.form.password,
+        createTime: new Date().toISOString()
+      };
+      users.push(newUser);
+      localStorage.setItem("vab-users", JSON.stringify(users));
+
+      ElMessage.success("注册成功");
+      // 注册成功后跳转到登录页
+      setTimeout(() => {
+        router.push("/login");
+      }, 1500);
     }
   });
 };

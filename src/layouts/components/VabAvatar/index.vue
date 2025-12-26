@@ -31,48 +31,11 @@
           <span>个人中心</span>
         </el-dropdown-item>
 
+
         <el-dropdown-item command="settings" class="dropdown-item">
           <!-- 直接使用图标组件 -->
           <Setting class="dropdown-icon" />
           <span>系统设置</span>
-        </el-dropdown-item>
-
-        <el-divider></el-divider>
-
-        <el-dropdown-item command="github" class="dropdown-item">
-          <!-- 直接使用图标组件 -->
-          <Link class="dropdown-icon" />
-          <span>GitHub 地址</span>
-        </el-dropdown-item>
-
-        <el-dropdown-item command="gitee" class="dropdown-item">
-          <!-- 直接使用图标组件 -->
-          <Link class="dropdown-icon" />
-          <span>码云地址</span>
-        </el-dropdown-item>
-
-        <el-dropdown-item command="pro" class="dropdown-item">
-          <!-- 直接使用图标组件 -->
-          <Link class="dropdown-icon" />
-          <span>Admin Pro 地址</span>
-        </el-dropdown-item>
-
-        <el-dropdown-item command="plus" class="dropdown-item">
-          <!-- 直接使用图标组件 -->
-          <Link class="dropdown-icon" />
-          <span>Admin Plus 地址</span>
-        </el-dropdown-item>
-
-        <el-dropdown-item command="shop" class="dropdown-item">
-          <!-- 直接使用图标组件 -->
-          <Link class="dropdown-icon" />
-          <span>Shop Vite 地址</span>
-        </el-dropdown-item>
-
-        <el-dropdown-item command="job" class="dropdown-item">
-          <!-- 直接使用图标组件 -->
-          <Link class="dropdown-icon" />
-          <span>好工作就业参考网</span>
         </el-dropdown-item>
 
         <el-divider></el-divider>
@@ -97,7 +60,6 @@ import {
   ArrowDown,
   User,
   Setting,
-  Link,
   SwitchButton,
 } from "@element-plus/icons-vue";
 
@@ -127,33 +89,15 @@ const handleCommand = (command) => {
     case "settings":
       settings();
       break;
-    case "github":
-      window.open("https://github.com/zxwk1998/vue-admin-better");
-      break;
-    case "gitee":
-      window.open("https://gitee.com/chu1204505056/vue-admin-better");
-      break;
-    case "pro":
-      window.open("https://vuejs-core.cn/admin-pro/");
-      break;
-    case "plus":
-      window.open("https://vuejs-core.cn/admin-plus/");
-      break;
-    case "shop":
-      window.open("https://vuejs-core.cn/shop-vite/");
-      break;
-    case "job":
-      window.open("https://job.vuejs-core.cn/");
-      break;
   }
 };
 
 const personalCenter = () => {
-  router.push("/personalCenter/personalCenter");
+  router.push("/personal/index");
 };
 
 const settings = () => {
-  ElMessage.info("系统设置功能开发中...");
+  router.push("/settings/index");
 };
 
 const logout = () => {

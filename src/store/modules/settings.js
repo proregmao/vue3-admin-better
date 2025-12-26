@@ -8,7 +8,7 @@ import defaultSettings from '@/config'
 const { tabsBar, logo, layout, header, themeBar } = defaultSettings
 const theme = JSON.parse(localStorage.getItem('vue-admin-better-theme')) || ''
 const state = () => ({
-  tabsBar: theme.tabsBar || tabsBar,
+  tabsBar: tabsBar,
   logo,
   collapse: false,
   layout: theme.layout || layout,

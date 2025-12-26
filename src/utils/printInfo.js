@@ -5,5 +5,4 @@ import { donationConsole } from 'layouts'
 
 export function printLayoutsInfo() {
   // 只在控制台打印
-  donationConsole()
 }

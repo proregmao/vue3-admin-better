@@ -66,6 +66,7 @@ export const faToElIcon = (icon) => {
     "list-ul": "List",
     "user-cog": "Setting",
     cog: "Setting",
+    setting: "Setting",
     cogs: "Tools",
     tools: "Tools",
     wrench: "Tools",
